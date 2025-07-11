@@ -6,13 +6,16 @@
     <title>التوثيق اليومي | مركز حذيفة بن اليمان</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* الألوان والخطوط الأساسية */
         :root {
             --primary: #2c786c;
+            --primary-light: #57b8a7;
             --secondary: #004445;
             --accent: #f8b400;
+            --accent-dark: #e69c00;
             --light: #faf5e4;
             --dark: #1a1a2e;
+            --white: #ffffff;
+            --gray: #f0f0f0;
         }
         
         * {
@@ -25,16 +28,18 @@
         body {
             background-color: var(--light);
             color: var(--dark);
+            line-height: 1.6;
         }
         
         /* الهيدر الرئيسي */
         .hero {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         .hero::before {
@@ -46,7 +51,7 @@
             height: 100%;
             background: url('https://a.top4top.io/p_3463hcooj1.png') no-repeat center;
             background-size: contain;
-            opacity: 0.1;
+            opacity: 0.08;
             z-index: 0;
         }
         
@@ -60,38 +65,47 @@
         .logo {
             width: 150px;
             height: 150px;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             border-radius: 50%;
             border: 5px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.5s;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
         }
         
         .logo:hover {
-            transform: rotate(15deg) scale(1.05);
+            transform: rotateY(15deg) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, var(--accent), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
         
         .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
             font-weight: 300;
-            line-height: 1.6;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .inspiration {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
             border-radius: 15px;
-            margin: 2rem auto;
+            margin: 2.5rem auto;
             max-width: 800px;
             border-right: 5px solid var(--accent);
             position: relative;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .inspiration::before {
@@ -100,58 +114,117 @@
             font-weight: 900;
             position: absolute;
             top: -15px;
-            right: 20px;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.3);
+            right: 30px;
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.2);
         }
         
         .inspiration p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
-            line-height: 1.8;
+            line-height: 1.9;
+            color: var(--white);
         }
         
         .date-badge {
             background-color: var(--accent);
             color: var(--dark);
-            padding: 0.5rem 1.5rem;
+            padding: 0.7rem 2rem;
             border-radius: 50px;
             display: inline-block;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .date-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            background-color: var(--accent-dark);
         }
         
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             background-color: var(--accent);
             color: var(--dark);
             text-decoration: none;
             border-radius: 50px;
-            margin: 0.5rem;
+            margin: 0.7rem;
             font-weight: bold;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0));
+            opacity: 0;
+            transition: all 0.3s;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            background-color: #ffc107;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+            background-color: var(--accent-dark);
+        }
+        
+        .btn:hover::after {
+            opacity: 1;
         }
         
         .btn-outline {
             background-color: transparent;
-            border: 2px solid white;
-            color: white;
+            border: 2px solid var(--white);
+            color: var(--white);
         }
         
         .btn-outline:hover {
-            background-color: white;
+            background-color: var(--white);
             color: var(--primary);
+        }
+        
+        .week-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 3rem;
+        }
+        
+        .week-tab {
+            padding: 1rem 2.5rem;
+            background-color: var(--gray);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            margin: 0 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+        }
+        
+        .week-tab.active {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(44, 120, 108, 0.3);
+        }
+        
+        .week-tab:hover:not(.active) {
+            background-color: var(--primary-light);
+            color: var(--white);
         }
         
         .container {
@@ -160,31 +233,6 @@
             padding: 0 2rem;
         }
         
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            display: inline-block;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-          
         /* قسم التوثيق اليومي */
         .daily-documentation {
             max-width: 1200px;
@@ -194,15 +242,16 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
         }
         
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--secondary);
             display: inline-block;
-            padding-bottom: 1rem;
+            padding-bottom: 1.5rem;
+            position: relative;
         }
         
         .section-header h2::after {
@@ -211,10 +260,16 @@
             bottom: 0;
             right: 50%;
             transform: translateX(50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            border-radius: 3px;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 1rem;
         }
         
         /* فلتر الأيام */
@@ -227,30 +282,43 @@
         }
         
         .day-btn {
-            padding: 0.8rem 1.5rem;
-            background-color: white;
+            padding: 1rem 2rem;
+            background-color: var(--white);
             border: 2px solid var(--primary);
             color: var(--primary);
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-width: 120px;
+            text-align: center;
+            font-size: 1.1rem;
         }
         
         .day-btn:hover, .day-btn.active {
             background-color: var(--primary);
-            color: white;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(44, 120, 108, 0.3);
         }
         
         /* بطاقة التوثيق اليومي */
         .documentation-card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
             display: none;
             animation: fadeIn 0.5s ease;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .documentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
         
         @keyframes fadeIn {
@@ -265,13 +333,28 @@
         .doc-header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .doc-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
         }
         
         .doc-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
         }
         
         .doc-date {
@@ -279,11 +362,13 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .doc-content {
-            padding: 2rem;
+            padding: 2.5rem;
         }
         
         .video-container {
@@ -291,9 +376,10 @@
             padding-bottom: 56.25%; /* نسبة 16:9 */
             height: 0;
             overflow: hidden;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .video-container iframe {
@@ -307,71 +393,108 @@
         
         .summary {
             background-color: rgba(44, 120, 108, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border-right: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            border-right: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .summary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 120, 108, 0.03), rgba(44, 120, 108, 0.01));
         }
         
         .summary h4 {
             color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
         
         .summary h4 i {
             color: var(--accent);
+            font-size: 1.8rem;
         }
         
         .summary p {
-            line-height: 1.8;
-            font-size: 1.1rem;
+            line-height: 1.9;
+            font-size: 1.2rem;
+            color: var(--dark);
         }
         
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
         }
         
         .gallery-item {
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            height: 280px;
+            position: relative;
+        }
+        
+        .gallery-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+            opacity: 0;
             transition: all 0.3s;
-            height: 250px;
         }
         
         .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 1;
         }
         
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
         
         .highlights {
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
         
         .highlights h4 {
             color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
         
         .highlights h4 i {
             color: var(--accent);
+            font-size: 1.8rem;
         }
         
         .highlights ul {
@@ -380,45 +503,48 @@
         }
         
         .highlights li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             position: relative;
-            padding-right: 1.5rem;
-            line-height: 1.6;
+            padding-right: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
         
         .highlights li::before {
             content: "";
             position: absolute;
             right: 0;
-            top: 0.7rem;
-            width: 8px;
-            height: 8px;
+            top: 0.8rem;
+            width: 10px;
+            height: 10px;
             background-color: var(--accent);
             border-radius: 50%;
+            transform: translateY(-50%);
         }
         
         .social-share {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
+            margin-top: 3rem;
             flex-wrap: wrap;
         }
         
         .social-btn {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
             color: white;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         .twitter { background-color: #1DA1F2; }
@@ -428,38 +554,149 @@
         /* زر العودة للأعلى */
         .back-to-top {
             position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            width: 50px;
-            height: 50px;
+            bottom: 3rem;
+            left: 3rem;
+            width: 60px;
+            height: 60px;
             background-color: var(--accent);
             color: var(--dark);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: all 0.3s;
             z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
         }
         
         .back-to-top:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.1);
+            background-color: var(--accent-dark);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* تأثيرات للبطاقات عند الظهور */
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-card {
+            animation: cardEntrance 0.6s ease-out forwards;
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.4rem;
+            }
+            
+            .doc-header h3 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
         }
         
         @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
             .section-header h2 {
                 font-size: 2rem;
             }
             
             .doc-header h3 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+            }
+            
+            .doc-content {
+                padding: 1.5rem;
             }
             
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .day-btn {
+                padding: 0.8rem 1.5rem;
+                min-width: 100px;
+                font-size: 1rem;
+            }
+            
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 2rem;
+                left: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .days-filter {
+                gap: 0.8rem;
+            }
+            
+            .day-btn {
+                padding: 0.7rem 1.2rem;
+                min-width: 90px;
+                font-size: 0.9rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -491,11 +728,18 @@
             </div>
         </div>
     </section>
-    <!-- قسم التوثيق اليومي -->
-    <section class="daily-documentation">
+
+    <!-- تبويب الأسابيع -->
+    <div class="week-tabs">
+        <button class="week-tab active" data-week="week1">الأسبوع الأول</button>
+        <button class="week-tab" data-week="week2">الأسبوع الثاني</button>
+    </div>
+    
+    <!-- قسم التوثيق اليومي للأسبوع الأول -->
+    <section id="week1" class="daily-documentation week-content active">
         <div class="section-header">
-            <h2>التوثيق اليومي للفعاليات</h2>
-            <p>تابعوا أبرز اللحظات والذكريات من كل يوم في رحلتنا الصيفية</p>
+            <h2>فعاليات الأسبوع الأول</h2>
+            <p>مجموعة الفتية المبدعين - من الأحد إلى الخميس</p>
         </div>
         
         <!-- فلتر الأيام -->
@@ -505,15 +749,10 @@
             <button class="day-btn" data-day="day3">اليوم الثالث</button>
             <button class="day-btn" data-day="day4">اليوم الرابع</button>
             <button class="day-btn" data-day="day5">اليوم الخامس</button>
-            <button class="day-btn" data-day="day6">اليوم السادس</button>
-            <button class="day-btn" data-day="day7">اليوم السابع</button>
-            <button class="day-btn" data-day="day8">اليوم الثامن</button>
-            <button class="day-btn" data-day="day9">اليوم التاسع</button>
-            <button class="day-btn" data-day="day10">اليوم العاشر</button>
         </div>
         
         <!-- اليوم الأول -->
-        <div id="day1" class="documentation-card active">
+        <div id="day1" class="documentation-card active animate-card">
             <div class="doc-header">
                 <h3>اليوم الأول: حفل الافتتاح</h3>
                 <div class="doc-date">
@@ -549,7 +788,7 @@
 وهكذا… دارت عجلة اليوم الأول وتحول المركز إلى خلية نحل لا تهدأ فيها الطالب مستمع ومتفاعل ومبادر… يكتب أول سطر في صفحة من فصول النمو والبناء .
  <p>
 وعند تمام الثانية عشرة والنصف
-أُسدل الستار على هذا اليوم البهي وغادرت الحافلات وهي تحمل في مقاعدها أجسادا صغيرة لكنها تحمل في داخلها أرواحا بدأت تكبر على دروب الطموح وأحلاما تلوح كالأفق… لا يحدها سوى السماء …
+أُسدل الستار على هذا اليوم البهي وغادرت الحافلات وهي تحمل في مقاعدها أجسادا صغيرة لكنها تحمل في داخلها أرواحا بدأت تكبر على دروب الطموح وأحلاما تلوح كالأفق… لا يحدها سوى السماء ...
                     </p>
                 </div>
                 
@@ -598,9 +837,9 @@
         </div>
         
         <!-- اليوم الثاني -->
-        <div id="day2" class="documentation-card">
+        <div id="day2" class="documentation-card animate-card">
             <div class="doc-header">
-                <h3>اليوم الثاني: استراحة سافانا </h3>
+                <h3>اليوم الثاني: استراحة سافانا</h3>
                 <div class="doc-date">
                     <i class="fas fa-calendar-alt"></i>
                     <span>الإثنين 7 يوليو ٢٠٢٥</span>
@@ -678,8 +917,8 @@
             </div>
         </div>
         
-      <!-- اليوم الثالث -->
-        <div id="day3" class="documentation-card">
+        <!-- اليوم الثالث -->
+        <div id="day3" class="documentation-card animate-card">
             <div class="doc-header">
                 <h3>اليوم الثالث: فعاليات متنوعة والبيوت المحمية</h3>
                 <div class="doc-date">
@@ -753,10 +992,11 @@
                 </div>
             </div>
         </div>
-      <!-- اليوم الرابع -->
-        <div id="day4" class="documentation-card">
+        
+        <!-- اليوم الرابع -->
+        <div id="day4" class="documentation-card animate-card">
             <div class="doc-header">
-                <h3>اليوم الرابع: بين البيان والرماية… وبين التطوع والسلامة </h3>
+                <h3>اليوم الرابع: بين البيان والرماية… وبين التطوع والسلامة</h3>
                 <div class="doc-date">
                     <i class="fas fa-calendar-alt"></i>
                     <span>الإربعاء 9 يوليو ٢٠٢٥</span>
@@ -838,8 +1078,8 @@
             </div>
         </div>
 
-          <!-- اليوم الخامس -->
-        <div id="day5" class="documentation-card">
+        <!-- اليوم الخامس -->
+        <div id="day5" class="documentation-card animate-card">
             <div class="doc-header">
                 <h3>اليوم الخامس: مسك الختام... وعطر الإنجاز</h3>
                 <div class="doc-date">
@@ -918,9 +1158,57 @@
                 </div>
             </div>
         </div>
-
-        <!-- باقي الأيام -->
-        <!-- ... -->
+    </section>
+    
+    <!-- قسم التوثيق اليومي للأسبوع الثاني -->
+    <section id="week2" class="daily-documentation week-content">
+        <div class="section-header">
+            <h2>فعاليات الأسبوع الثاني</h2>
+            <p>مجموعة النخبة المتميزة - من الأحد إلى الخميس</p>
+        </div>
+        
+        <!-- فلتر الأيام -->
+        <div class="days-filter">
+            <button class="day-btn active" data-day="day6">اليوم الأول</button>
+            <button class="day-btn" data-day="day7">اليوم الثاني</button>
+            <button class="day-btn" data-day="day8">اليوم الثالث</button>
+            <button class="day-btn" data-day="day9">اليوم الرابع</button>
+            <button class="day-btn" data-day="day10">اليوم الخامس</button>
+        </div>
+        
+        <!-- اليوم الأول للأسبوع الثاني -->
+        <div id="day6" class="documentation-card active animate-card">
+            <div class="doc-header">
+                <h3>اليوم الأول: افتتاح الأسبوع الثاني</h3>
+                <div class="doc-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>الأحد 13 يوليو ٢٠٢٥</span>
+                </div>
+            </div>
+            
+            <div class="doc-content">
+                <div class="summary">
+                    <h4><i class="fas fa-clipboard-list"></i> ملخص اليوم</h4>
+                    <p>
+                        بدأ الأسبوع الثاني بحماس جديد مع مجموعة مختلفة من الطلاب المتميزين. تم الترحيب بالطلاب الجدد وتوزيعهم على الفرق، مع جلسة تعريفية بأهداف الأسبوع الثاني الذي ركز على التميز والإبداع.
+                    </p>
+                </div>
+                
+                <div class="highlights">
+                    <h4><i class="fas fa-star"></i> أبرز الأحداث</h4>
+                    <ul>
+                        <li>كلمة ترحيبية من قائد المركز للطلاب الجدد</li>
+                        <li>تقسيم الطلاب إلى فرق جديدة</li>
+                        <li>جلسة تعريفية بأهداف الأسبوع الثاني</li>
+                        <li>بدء ورش العمل المتقدمة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- باقي أيام الأسبوع الثاني -->
+        <!-- يمكنك إضافة الأيام من 7 إلى 10 بنفس الهيكل -->
+        
     </section>
     
     <!-- زر العودة للأعلى -->
@@ -929,53 +1217,110 @@
     </div>
     
 <script>
-    // تبديل بين أيام الفعاليات
+    // تبديل بين الأسابيع
     document.addEventListener('DOMContentLoaded', function() {
-        const dayButtons = document.querySelectorAll('.day-btn');
-        const dayCards = document.querySelectorAll('.documentation-card');
+        const weekTabs = document.querySelectorAll('.week-tab');
+        const weekContents = document.querySelectorAll('.week-content');
         
-        dayButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
+        weekTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const weekId = this.getAttribute('data-week');
                 
-                // إزالة النشاط من جميع الأزرار
-                dayButtons.forEach(btn => btn.classList.remove('active'));
-                
+                // إزالة النشاط من جميع أزرار الأسابيع
+                weekTabs.forEach(t => t.classList.remove('active'));
                 // إضافة النشاط للزر المحدد
                 this.classList.add('active');
                 
-                // إخفاء جميع البطاقات
-                dayCards.forEach(card => {
-                    card.style.display = 'none';
-                    card.classList.remove('active');
+                // إخفاء جميع محتويات الأسابيع
+                weekContents.forEach(content => {
+                    content.classList.remove('active');
                 });
                 
-                // إظهار البطاقة المحددة
-                const dayId = this.getAttribute('data-day');
-                const targetCard = document.getElementById(dayId);
-                if(targetCard) {
-                    targetCard.style.display = 'block';
-                    targetCard.classList.add('active');
+                // إظهار المحتوى المحدد
+                document.getElementById(weekId).classList.add('active');
+                
+                // إعادة تعيين اليوم الأول كنشط
+                const activeWeek = document.querySelector('.week-content.active');
+                const firstDay = activeWeek.querySelector('.documentation-card');
+                if (firstDay) {
+                    activeWeek.querySelectorAll('.documentation-card').forEach(card => {
+                        card.classList.remove('active');
+                    });
+                    firstDay.classList.add('active');
                     
-                    // التمرير لأعلى البطاقة
-                    targetCard.scrollIntoView({ behavior: 'smooth' });
+                    // إعادة تعيين زر اليوم الأول كنشط
+                    activeWeek.querySelectorAll('.day-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    activeWeek.querySelector('.day-btn').classList.add('active');
                 }
             });
         });
-
+        
+        // تبديل بين أيام الفعاليات لكل أسبوع
+        document.querySelectorAll('.days-filter').forEach(filter => {
+            filter.addEventListener('click', function(e) {
+                if (e.target.classList.contains('day-btn')) {
+                    const dayId = e.target.getAttribute('data-day');
+                    const weekContent = this.closest('.week-content');
+                    
+                    // إزالة النشاط من جميع أزرار الأيام
+                    this.querySelectorAll('.day-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    // إضافة النشاط للزر المحدد
+                    e.target.classList.add('active');
+                    
+                    // إخفاء جميع بطاقات الأيام
+                    weekContent.querySelectorAll('.documentation-card').forEach(card => {
+                        card.style.display = 'none';
+                        card.classList.remove('active');
+                    });
+                    
+                    // إظهار البطاقة المحددة
+                    const targetCard = document.getElementById(dayId);
+                    if (targetCard) {
+                        targetCard.style.display = 'block';
+                        targetCard.classList.add('active');
+                        
+                        // التمرير لأعلى البطاقة
+                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+        
         // زر العودة للأعلى
         const backToTopBtn = document.getElementById('backToTop');
         
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
-                backToTopBtn.style.display = 'flex';
+                backToTopBtn.classList.add('visible');
             } else {
-                backToTopBtn.style.display = 'none';
+                backToTopBtn.classList.remove('visible');
             }
         });
         
         backToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // تأثيرات الظهور للبطاقات
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-card');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.documentation-card').forEach(card => {
+            observer.observe(card);
         });
     });
 </script>
