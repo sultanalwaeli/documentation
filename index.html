@@ -698,6 +698,19 @@
             .gallery {
                 grid-template-columns: 1fr;
             }
+            .videos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.video-caption {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -1090,9 +1103,17 @@
             
             <div class="doc-content">
                 <!-- فيديو اليوم -->
-                <div class="video-container">
-                    <iframe src="https://l.top4top.io/m_34783974g1.mp4" allowfullscreen></iframe>
-                </div>
+                <div class="videos-container">
+    <div class="video-container">
+        <iframe src="https://l.top4top.io/m_34783974g1.mp4 " allowfullscreen></iframe>
+        <p class="video-caption">فعاليات اليوم الخامس تصوير مصعب السكيتي  </p>
+    </div>
+    <div class="video-container">
+        <iframe src="https://g.top4top.io/m_3479o2qgm1.mp4" allowfullscreen></iframe>
+        <p class="video-caption">  تقرير محمود السكيتي </p>
+    </div>
+
+</div>
                 
                 <!-- ملخص اليوم -->
                 <div class="summary">
