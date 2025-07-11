@@ -196,36 +196,46 @@
             color: var(--primary);
         }
         
-        .week-tabs {
-            display: flex;
-            justify-content: center;
-            margin: 2rem 0 3rem;
-        }
-        
-        .week-tab {
-            padding: 1rem 2.5rem;
-            background-color: var(--gray);
-            color: var(--dark);
-            border: none;
-            border-radius: 50px;
-            margin: 0 0.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            font-size: 1.1rem;
-        }
-        
-        .week-tab.active {
-            background-color: var(--primary);
-            color: var(--white);
-            box-shadow: 0 8px 20px rgba(44, 120, 108, 0.3);
-        }
-        
-        .week-tab:hover:not(.active) {
-            background-color: var(--primary-light);
-            color: var(--white);
-        }
+      .week-tabs-container {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.week-tabs {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.week-tab {
+    padding: 1rem 2.5rem;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.week-tab.active {
+    background-color: var(--accent);
+    color: var(--dark);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.week-tab:hover:not(.active) {
+    background-color: rgba(255,255,255,0.3);
+}
         
         .container {
             max-width: 1200px;
@@ -742,11 +752,13 @@
         </div>
     </section>
 
-    <!-- تبويب الأسابيع -->
+  <!-- تبويب الأسابيع -->
+<div class="week-tabs-container">
     <div class="week-tabs">
         <button class="week-tab active" data-week="week1">الأسبوع الأول</button>
         <button class="week-tab" data-week="week2">الأسبوع الثاني</button>
     </div>
+</div>
     
     <!-- قسم التوثيق اليومي للأسبوع الأول -->
     <section id="week1" class="daily-documentation week-content active">
@@ -1238,45 +1250,69 @@
     </div>
     
 <script>
-    // تبديل بين الأسابيع
-    document.addEventListener('DOMContentLoaded', function() {
-        const weekTabs = document.querySelectorAll('.week-tab');
-        const weekContents = document.querySelectorAll('.week-content');
-        
-        weekTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const weekId = this.getAttribute('data-week');
-                
-                // إزالة النشاط من جميع أزرار الأسابيع
-                weekTabs.forEach(t => t.classList.remove('active'));
-                // إضافة النشاط للزر المحدد
-                this.classList.add('active');
-                
-                // إخفاء جميع محتويات الأسابيع
-                weekContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // إظهار المحتوى المحدد
-                document.getElementById(weekId).classList.add('active');
-                
-                // إعادة تعيين اليوم الأول كنشط
-                const activeWeek = document.querySelector('.week-content.active');
-                const firstDay = activeWeek.querySelector('.documentation-card');
-                if (firstDay) {
-                    activeWeek.querySelectorAll('.documentation-card').forEach(card => {
-                        card.classList.remove('active');
-                    });
-                    firstDay.classList.add('active');
-                    
-                    // إعادة تعيين زر اليوم الأول كنشط
-                    activeWeek.querySelectorAll('.day-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    activeWeek.querySelector('.day-btn').classList.add('active');
-                }
+  // تبديل بين الأسابيع - النسخة المحسنة
+function setupWeekTabs() {
+    const weekTabs = document.querySelectorAll('.week-tab');
+    const weekContents = document.querySelectorAll('.week-content');
+    
+    weekTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const weekId = this.getAttribute('data-week');
+            
+            // إزالة النشاط من جميع أزرار الأسابيع
+            weekTabs.forEach(t => t.classList.remove('active'));
+            // إضافة النشاط للزر المحدد
+            this.classList.add('active');
+            
+            // إخفاء جميع محتويات الأسابيع
+            weekContents.forEach(content => {
+                content.classList.remove('active');
             });
+            
+            // إظهار المحتوى المحدد
+            document.getElementById(weekId).classList.add('active');
+            
+            // إعادة تعيين اليوم الأول كنشط لكل أسبوع
+            resetActiveDay(weekId);
+            
+            // التمرير لأعلى القسم
+            document.getElementById(weekId).scrollIntoView({ behavior: 'smooth' });
         });
+    });
+}
+
+// إعادة تعيين اليوم النشط لكل أسبوع
+function resetActiveDay(weekId) {
+    const weekContent = document.getElementById(weekId);
+    
+    // إخفاء جميع بطاقات الأيام
+    weekContent.querySelectorAll('.documentation-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    
+    // إظهار البطاقة الأولى
+    const firstCard = weekContent.querySelector('.documentation-card');
+    if (firstCard) {
+        firstCard.classList.add('active');
+    }
+    
+    // إعادة تعيين أزرار الأيام
+    const dayButtons = weekContent.querySelectorAll('.day-btn');
+    dayButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    if (dayButtons.length > 0) {
+        dayButtons[0].classList.add('active');
+    }
+}
+
+// استدعاء الدالة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    setupWeekTabs();
+    
+    // باقي الكود الخاص بالتبديل بين الأيام...
+});
         
         // تبديل بين أيام الفعاليات لكل أسبوع
         document.querySelectorAll('.days-filter').forEach(filter => {
