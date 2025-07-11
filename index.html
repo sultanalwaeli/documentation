@@ -1239,9 +1239,122 @@
             </div>
         </div>
         
-        <!-- باقي أيام الأسبوع الثاني -->
-        <!-- يمكنك إضافة الأيام من 7 إلى 10 بنفس الهيكل -->
+        <!-- اليوم الثاني للأسبوع الثاني -->
+        <div id="day7" class="documentation-card animate-card">
+            <div class="doc-header">
+                <h3>اليوم الثاني: ورش متقدمة</h3>
+                <div class="doc-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>الإثنين 14 يوليو ٢٠٢٥</span>
+                </div>
+            </div>
+            
+            <div class="doc-content">
+                <div class="summary">
+                    <h4><i class="fas fa-clipboard-list"></i> ملخص اليوم</h4>
+                    <p>
+                        شهد اليوم الثاني من الأسبوع الثاني سلسلة من الورش المتقدمة التي ركزت على تنمية المهارات القيادية والإبداعية لدى الطلاب.
+                    </p>
+                </div>
+                
+                <div class="highlights">
+                    <h4><i class="fas fa-star"></i> أبرز الأحداث</h4>
+                    <ul>
+                        <li>ورشة القيادة الشبابية</li>
+                        <li>جلسات العصف الذهني الإبداعي</li>
+                        <li>تحديات العمل الجماعي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         
+        <!-- اليوم الثالث للأسبوع الثاني -->
+        <div id="day8" class="documentation-card animate-card">
+            <div class="doc-header">
+                <h3>اليوم الثالث: زيارات ميدانية</h3>
+                <div class="doc-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>الثلاثاء 15 يوليو ٢٠٢٥</span>
+                </div>
+            </div>
+            
+            <div class="doc-content">
+                <div class="summary">
+                    <h4><i class="fas fa-clipboard-list"></i> ملخص اليوم</h4>
+                    <p>
+                        قام الطلاب بعدة زيارات ميدانية لمؤسسات علمية وثقافية لتعزيز خبراتهم العملية وتوسيع آفاقهم المعرفية.
+                    </p>
+                </div>
+                
+                <div class="highlights">
+                    <h4><i class="fas fa-star"></i> أبرز الأحداث</h4>
+                    <ul>
+                        <li>زيارة مركز الابتكار التقني</li>
+                        <li>جولة في المتحف الوطني</li>
+                        <li>ورشة عمل في المكتبة العامة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- اليوم الرابع للأسبوع الثاني -->
+        <div id="day9" class="documentation-card animate-card">
+            <div class="doc-header">
+                <h3>اليوم الرابع: عروض وتجارب</h3>
+                <div class="doc-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>الأربعاء 16 يوليو ٢٠٢٥</span>
+                </div>
+            </div>
+            
+            <div class="doc-content">
+                <div class="summary">
+                    <h4><i class="fas fa-clipboard-list"></i> ملخص اليوم</h4>
+                    <p>
+                        قدم الطلاب عروضاً لتجاربهم وما تعلموه خلال الأسبوع، مع فرصة لتطبيق المعرفة في مشاريع عملية.
+                    </p>
+                </div>
+                
+                <div class="highlights">
+                    <h4><i class="fas fa-star"></i> أبرز الأحداث</h4>
+                    <ul>
+                        <li>عروض الطلاب للمشاريع</li>
+                        <li>تجارب علمية تفاعلية</li>
+                        <li>منافسات ثقافية وعلمية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- اليوم الخامس للأسبوع الثاني -->
+        <div id="day10" class="documentation-card animate-card">
+            <div class="doc-header">
+                <h3>اليوم الخامس: الحفل الختامي</h3>
+                <div class="doc-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>الخميس 17 يوليو ٢٠٢٥</span>
+                </div>
+            </div>
+            
+            <div class="doc-content">
+                <div class="summary">
+                    <h4><i class="fas fa-clipboard-list"></i> ملخص اليوم</h4>
+                    <p>
+                        اختتم البرنامج الصيفي بحفل ختامي كبير تم فيه تكريم الطلاب المتميزين وعرض إنجازات الأسبوعين.
+                    </p>
+                </div>
+                
+                <div class="highlights">
+                    <h4><i class="fas fa-star"></i> أبرز الأحداث</h4>
+                    <ul>
+                        <li>عرض لإنجازات الطلاب</li>
+                        <li>كلمات شكر وتقدير</li>
+                        <li>توزيع الشهادات والجوائز</li>
+                        <li>حفل ترفيهي ختامي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
     
     <!-- زر العودة للأعلى -->
@@ -1250,36 +1363,96 @@
     </div>
     
 <script>
-  // تبديل بين الأسابيع - النسخة المحسنة
-function setupWeekTabs() {
-    const weekTabs = document.querySelectorAll('.week-tab');
-    const weekContents = document.querySelectorAll('.week-content');
+document.addEventListener('DOMContentLoaded', function() {
+    // تهيئة أولية - إظهار الأسبوع الأول وإخفاء الثاني
+    document.getElementById('week2').classList.remove('active');
     
+    // تبويب الأسابيع
+    const weekTabs = document.querySelectorAll('.week-tab');
     weekTabs.forEach(tab => {
         tab.addEventListener('click', function() {
             const weekId = this.getAttribute('data-week');
             
-            // إزالة النشاط من جميع أزرار الأسابيع
+            // تحديث حالة الأزرار
             weekTabs.forEach(t => t.classList.remove('active'));
-            // إضافة النشاط للزر المحدد
             this.classList.add('active');
             
             // إخفاء جميع محتويات الأسابيع
-            weekContents.forEach(content => {
+            document.querySelectorAll('.week-content').forEach(content => {
                 content.classList.remove('active');
             });
             
             // إظهار المحتوى المحدد
             document.getElementById(weekId).classList.add('active');
             
-            // إعادة تعيين اليوم الأول كنشط لكل أسبوع
+            // إعادة تعيين اليوم الأول كنشط
             resetActiveDay(weekId);
             
             // التمرير لأعلى القسم
             document.getElementById(weekId).scrollIntoView({ behavior: 'smooth' });
         });
     });
-}
+    
+    // فلتر الأيام لكل أسبوع
+    document.querySelectorAll('.days-filter').forEach(filter => {
+        filter.addEventListener('click', function(e) {
+            if (e.target.classList.contains('day-btn')) {
+                const dayId = e.target.getAttribute('data-day');
+                const weekContent = this.closest('.week-content');
+                
+                // تحديث حالة الأزرار
+                this.querySelectorAll('.day-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+                
+                // إخفاء جميع بطاقات الأيام في هذا الأسبوع
+                weekContent.querySelectorAll('.documentation-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                
+                // إظهار البطاقة المحددة
+                document.getElementById(dayId).classList.add('active');
+                
+                // التمرير لأعلى البطاقة
+                document.getElementById(dayId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // زر العودة للأعلى
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // تأثيرات الظهور للبطاقات
+    const observerOptions = {
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-card');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.documentation-card').forEach(card => {
+        observer.observe(card);
+    });
+});
+
 // إعادة تعيين اليوم النشط لكل أسبوع
 function resetActiveDay(weekId) {
     const weekContent = document.getElementById(weekId);
@@ -1305,79 +1478,6 @@ function resetActiveDay(weekId) {
         dayButtons[0].classList.add('active');
     }
 }
-
-// استدعاء الدالة عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', function() {
-    setupWeekTabs();
-    
-    // باقي الكود الخاص بالتبديل بين الأيام...
-});
-        
-        // تبديل بين أيام الفعاليات لكل أسبوع
-      // تبديل بين أيام الفعاليات لكل أسبوع
-document.querySelectorAll('.days-filter').forEach(filter => {
-    filter.addEventListener('click', function(e) {
-        if (e.target.classList.contains('day-btn')) {
-            const dayId = e.target.getAttribute('data-day');
-            const weekContent = this.closest('.week-content');
-            
-            // إزالة النشاط من جميع أزرار الأيام
-            this.querySelectorAll('.day-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            // إضافة النشاط للزر المحدد
-            e.target.classList.add('active');
-            
-            // إخفاء جميع بطاقات الأيام
-            weekContent.querySelectorAll('.documentation-card').forEach(card => {
-                card.classList.remove('active');
-            });
-            
-            // إظهار البطاقة المحددة
-            const targetCard = document.getElementById(dayId);
-            if (targetCard) {
-                targetCard.classList.add('active');
-                
-                // التمرير لأعلى البطاقة
-                targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    });
-});
-        
-        // زر العودة للأعلى
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // تأثيرات الظهور للبطاقات
-        const observerOptions = {
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-card');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.documentation-card').forEach(card => {
-            observer.observe(card);
-        });
-    });
 </script>
 </body>
 </html>
