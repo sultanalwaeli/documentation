@@ -1280,7 +1280,6 @@ function setupWeekTabs() {
         });
     });
 }
-
 // إعادة تعيين اليوم النشط لكل أسبوع
 function resetActiveDay(weekId) {
     const weekContent = document.getElementById(weekId);
@@ -1315,37 +1314,36 @@ document.addEventListener('DOMContentLoaded', function() {
 });
         
         // تبديل بين أيام الفعاليات لكل أسبوع
-        document.querySelectorAll('.days-filter').forEach(filter => {
-            filter.addEventListener('click', function(e) {
-                if (e.target.classList.contains('day-btn')) {
-                    const dayId = e.target.getAttribute('data-day');
-                    const weekContent = this.closest('.week-content');
-                    
-                    // إزالة النشاط من جميع أزرار الأيام
-                    this.querySelectorAll('.day-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    // إضافة النشاط للزر المحدد
-                    e.target.classList.add('active');
-                    
-                    // إخفاء جميع بطاقات الأيام
-                    weekContent.querySelectorAll('.documentation-card').forEach(card => {
-                        card.style.display = 'none';
-                        card.classList.remove('active');
-                    });
-                    
-                    // إظهار البطاقة المحددة
-                    const targetCard = document.getElementById(dayId);
-                    if (targetCard) {
-                        targetCard.style.display = 'block';
-                        targetCard.classList.add('active');
-                        
-                        // التمرير لأعلى البطاقة
-                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
+      // تبديل بين أيام الفعاليات لكل أسبوع
+document.querySelectorAll('.days-filter').forEach(filter => {
+    filter.addEventListener('click', function(e) {
+        if (e.target.classList.contains('day-btn')) {
+            const dayId = e.target.getAttribute('data-day');
+            const weekContent = this.closest('.week-content');
+            
+            // إزالة النشاط من جميع أزرار الأيام
+            this.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
-        });
+            // إضافة النشاط للزر المحدد
+            e.target.classList.add('active');
+            
+            // إخفاء جميع بطاقات الأيام
+            weekContent.querySelectorAll('.documentation-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // إظهار البطاقة المحددة
+            const targetCard = document.getElementById(dayId);
+            if (targetCard) {
+                targetCard.classList.add('active');
+                
+                // التمرير لأعلى البطاقة
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+});
         
         // زر العودة للأعلى
         const backToTopBtn = document.getElementById('backToTop');
