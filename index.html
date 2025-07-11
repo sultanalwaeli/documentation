@@ -1193,30 +1193,48 @@
         <i class="fas fa-arrow-up"></i>
     </div>
     
-    <script>
-        // تبديل بين أيام الفعاليات
-        document.addEventListener('DOMContentLoaded', function() {
-            const dayButtons = document.querySelectorAll('.day-btn');
-            const dayCards = document.querySelectorAll('.documentation-card');
-            
-            dayButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // إزالة النشاط من جميع الأزرار
-                    dayButtons.forEach(btn => btn.classList.remove('active'));
-                    // إضافة النشاط للزر المحدد
-                    this.classList.add('active');
-                    
-                    // إخفاء جميع البطاقات
-                    dayCards.forEach(card => card.classList.remove('active'));
-                    // إظهار البطاقة المحددة
-                    const dayId = this.getAttribute('data-day');
-                    document.getElementById(dayId).classList.add('active');
+<script>
+    // تبديل بين أيام الفعاليات - النسخة المعدلة
+    document.addEventListener('DOMContentLoaded', function() {
+        const dayButtons = document.querySelectorAll('.day-btn');
+        const dayCards = document.querySelectorAll('.documentation-card');
+        
+        // إخفاء جميع البطاقات وإظهار الأولى فقط
+        dayCards.forEach(card => {
+            if(!card.classList.contains('active')) {
+                card.style.display = 'none';
+            }
+        });
+        
+        dayButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // إزالة النشاط من جميع الأزرار
+                dayButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // إضافة النشاط للزر المحدد
+                this.classList.add('active');
+                
+                // إخفاء جميع البطاقات
+                dayCards.forEach(card => {
+                    card.style.display = 'none';
+                    card.classList.remove('active');
+                });
+                
+                // إظهار البطاقة المحددة
+                const dayId = this.getAttribute('data-day');
+                const targetCard = document.getElementById(dayId);
+                if(targetCard) {
+                    targetCard.style.display = 'block';
+                    targetCard.classList.add('active');
                     
                     // التمرير لأعلى البطاقة
-                    document.getElementById(dayId).scrollIntoView({ behavior: 'smooth' });
-                });
+                    targetCard.scrollIntoView({ behavior: 'smooth' });
+                }
             });
-            
+        });
+
             // زر العودة للأعلى
             const backToTopBtn = document.getElementById('backToTop');
             
