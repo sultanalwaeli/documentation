@@ -716,15 +716,15 @@
                 <div class="comments-section">
                     <h4><i class="fas fa-comments"></i> ذكريات المشاركين</h4>
                     
-                    <div class="comment-form" id="commentFormDay1">
-                        <form>
+                    <div class="comment-form">
+                        <form id="commentForm">
                             <div class="form-group">
-                                <label for="name1">اسمك</label>
-                                <input type="text" id="name1" class="form-control" required>
+                                <label for="name">اسمك</label>
+                                <input type="text" id="name" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="comment1">تعليقك</label>
-                                <textarea id="comment1" class="form-control" required></textarea>
+                                <label for="comment">تعليقك</label>
+                                <textarea id="comment" class="form-control" required></textarea>
                             </div>
                             <button type="submit" class="submit-btn">أضف تعليق <i class="fas fa-paper-plane"></i></button>
                         </form>
@@ -774,7 +774,7 @@
  <p>
 وما بين غموض الخلية ورائحة الشمع جلس الطلبة أمام النحال حامد الشبونوتي في ورشة ( تربية النحل وصناعة العسل ) يتأملون عالماً دقيقا يبني أمجاده بالتعاون وينسج ذهبه بصمت .
  <p>
-ثن امتزج العلم بالحركة في ورشة ( الرياضيات الحركية ) حيث قاد الأستاذ درويش الغافري الأذهان إلى متعة الحساب وسط ميادين التحدي الشعبي ليتحول الرقم إلى لعبة والمعادلة إلى مغامرة .
+ثم امتزج العلم بالحركة في ورشة ( الرياضيات الحركية ) حيث قاد الأستاذ درويش الغافري الأذهان إلى متعة الحساب وسط ميادين التحدي الشعبي ليتحول الرقم إلى لعبة والمعادلة إلى مغامرة .
  <p>
 توزع الطلبة في مجموعات متناغمة تلتقي وتفترق تتعلم وتبدع في يوم استثنائي غلّفه الإعداد المتقن  وأضاءته نوايا التمكين .. وغايته : صيف مختلف... يصنع الذاكرة ويغرس القيم ويشعل الطموح .
  <p>
@@ -807,6 +807,8 @@
                         <li> تم تقسيم المشاركين إلى مجموعتين متوازيتين، مع تكرار بعض الورش عبر المجموعتين لتمكين الجميع من المشاركة.</li>
                         <li> اختيار استراحة سافانا كبيئة مشتركة أنشطة متنوعة أضفى طابعاً تفاعلياً خارج الصف التقليدي.</li>
                         <li>الورش توزعت على فترتين صباحيتين، مع استراحة وسطية سمحت بالانتقال والتجهيز للجلسة التالية. </li>
+              
+            
                     </ul>
                 </div>
                 
@@ -826,15 +828,15 @@
                 <div class="comments-section">
                     <h4><i class="fas fa-comments"></i> ذكريات المشاركين</h4>
                     
-                    <div class="comment-form" id="commentFormDay2">
-                        <form>
+                    <div class="comment-form">
+                        <form id="commentForm">
                             <div class="form-group">
-                                <label for="name2">اسمك</label>
-                                <input type="text" id="name2" class="form-control" required>
+                                <label for="name">اسمك</label>
+                                <input type="text" id="name" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="comment2">تعليقك</label>
-                                <textarea id="comment2" class="form-control" required></textarea>
+                                <label for="comment">تعليقك</label>
+                                <textarea id="comment" class="form-control" required></textarea>
                             </div>
                             <button type="submit" class="submit-btn">أضف تعليق <i class="fas fa-paper-plane"></i></button>
                         </form>
@@ -850,7 +852,7 @@
                 </div>
             </div>
         </div>
-  
+        
       <!-- اليوم الثالث -->
         <div id="day3" class="documentation-card">
             <div class="doc-header">
@@ -1197,13 +1199,6 @@
         const dayButtons = document.querySelectorAll('.day-btn');
         const dayCards = document.querySelectorAll('.documentation-card');
         
-        // إخفاء جميع البطاقات وإظهار الأولى فقط
-        dayCards.forEach(card => {
-            if(!card.classList.contains('active')) {
-                card.style.display = 'none';
-            }
-        });
-        
         dayButtons.forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1233,56 +1228,60 @@
             });
         });
 
-            // زر العودة للأعلى
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.style.display = 'flex';
-                } else {
-                    backToTopBtn.style.display = 'none';
+        // زر العودة للأعلى
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // إضافة تعليق جديد لليوم الأول
+        const commentForm = document.getElementById('commentForm');
+        
+        if (commentForm) {
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const commentText = document.getElementById('comment').value;
+                
+                if (name && commentText) {
+                    const commentsList = this.closest('.comments-section').querySelector('.comments-list');
+                    const now = new Date();
+                    
+                    const commentDiv = document.createElement('div');
+                    commentDiv.className = 'comment';
+                    commentDiv.innerHTML = `
+                        <div class="comment-header">
+                            <div class="comment-avatar">${name.charAt(0)}</div>
+                            <div>
+                                <div class="comment-author">${name}</div>
+                                <div class="comment-date">${now.toLocaleDateString('ar-EG')} - ${now.toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'})}</div>
+                            </div>
+                        </div>
+                        <div class="comment-text">${commentText}</div>
+                    `;
+                    
+                    commentsList.prepend(commentDiv);
+                    this.reset();
+                    
+                    // التمرير للتعليق الجديد
+                    commentDiv.scrollIntoView({ behavior: 'smooth' });
                 }
             });
-            
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            
-            // إضافة تعليق جديد لليوم الأول
-            const commentForm = document.getElementById('commentForm');
-            
-            if (commentForm) {
-                commentForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const name = document.getElementById('name').value;
-                    const commentText = document.getElementById('comment').value;
-                    
-                    if (name && commentText) {
-                        const commentsList = this.closest('.comments-section').querySelector('.comments-list');
-                        const now = new Date();
-                        
-                        const commentDiv = document.createElement('div');
-                        commentDiv.className = 'comment';
-                        commentDiv.innerHTML = `
-                            <div class="comment-header">
-                                <div class="comment-avatar">${name.charAt(0)}</div>
-                                <div>
-                                    <div class="comment-author">${name}</div>
-                                    <div class="comment-date">${now.toLocaleDateString('ar-EG')} - ${now.toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'})}</div>
-                                </div>
-                            </div>
-                            <div class="comment-text">${commentText}</div>
-                        `;
-                        
-                        commentsList.prepend(commentDiv);
-                        this.reset();
-                        
-                        // التمرير للتعليق الجديد
-                        commentDiv.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            }
+        }
+    });
+</script>
+</body>
+</html>
             
             // إضافة تعليق جديد لليوم الثاني
             const commentFormDay2 = document.getElementById('commentFormDay2');
