@@ -1262,8 +1262,7 @@
                 </div>
             </div>
         </div>
-        
-        <!-- اليوم الثاني للأسبوع الثاني -->
+ 
       <!-- اليوم الثاني للأسبوع الثاني -->
 <div id="day7" class="documentation-card animate-card">
     <div class="doc-header">
@@ -1521,6 +1520,9 @@ function resetActiveDay(weekId) {
         firstCard.classList.add('active');
     }
     
+    // في دالة resetActiveDay، أضف:
+console.log('Resetting active day for:', weekId);
+console.log('First card:', firstCard);
     // إعادة تعيين أزرار الأيام
     const dayButtons = weekContent.querySelectorAll('.day-btn');
     dayButtons.forEach(btn => {
